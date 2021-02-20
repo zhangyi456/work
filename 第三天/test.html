@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<body>
+    	<!-- 1.实现组件间数据传递
+
+		搭建一个嵌套组件页面，一共有一个父组件嵌套两个子组件，互相之间通信
+
+		要求1：搭建一个 vue 页面，结构如下：有一个父组件，显示父亲姓名，老婆姓名输入框，大儿子媳妇姓名；另外有两个子组件，
+		第一个子组件显示大儿子姓名，妈妈姓名，老婆姓名输入框，第二个子组件显示二儿子姓名，妈妈姓名，和大嫂姓名。
+
+		要求2：实现父子间数据传递，在父组件输入框输入老婆姓名，会即时改变两个子组件里面，妈妈姓名的数据；
+		在大儿子子组件输入框输入老婆姓名，会在父组件即时改变大儿子媳妇姓名的数据。
+
+		要求3：使用 import 公共 vue 实例的方式，实现兄弟组件之间的数据传递，在大儿子子组件输入老婆姓名，会即时修改二儿子子组件当中，大嫂名字的数据。 -->
+    <div id="app">
+       父亲的姓名:{{fatherName}}</br>
+       母亲的姓名:<input v-model="motherName"/></br>
+       大儿子媳妇姓名:{{bigWife}}
+       <child-a :mother-name="motherName" :big-Wife="bigWife"  @wife-name="wifeChange"></child-a>
+       <child-b :mother-name="motherName" :big-Wife="bigWife"></child-b>
+    </div>
+    <template id="son1">
+        <div>
+            大儿子姓名:{{bigSonName}}</br>
+            母亲姓名:{{motherName}}<br />
+            媳妇姓名:<input v-model="wife" @input='$emit("wife-name",wife),handle()'/>
+        </div>
+    </template>
+    <template id="son2">
+        <div>
+            小儿子姓名:{{littleSonName}}</br>
+            母亲姓名:{{motherName}}<br />
+            大嫂姓名:{{bigWife}}
+        </div>
+    </template>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-router@3.4.3/dist/vue-router.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuex@3.5.1/dist/vuex.min.js"></script>
+    <script>
+        const lalala = new Vue()
+        Vue.component('child-a',{
+            props:['motherName'],
+            template:'#son1',
+            data:function(){
+                return {
+                    bigSonName:'张青',
+                    wife:'李艳'
+                } 
+            },
+            methods:{
+                handle() {
+                    lalala.$emit('name-change', this.wife)
+					}
+            }
+        })
+        Vue.component('child-b',{
+            props:['motherName'],
+            template:'#son2',
+            data(){
+                return {
+                   littleSonName:'张墨',
+                   bigWife:'李艳'
+                } 
+            },
+            mounted() {
+					lalala.$on('name-change', value => {
+						this.bigWife = value
+					})
+				}
+        })
+        const vm = new Vue({
+            el: '#app',
+            name: 'App',
+            data:{
+               fatherName:'张三',
+               motherName:'某某',
+               bigWife:'李艳'
+            },
+         
+                methods: {
+					wifeChange: function (value) {
+						// console.log(e.target.value)
+						this.bigWife = value
+					}
+				}
+           
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,402 @@
+html {
+  font-size: 50px;
+}
+a {
+  text-transform: none;
+  text-decoration: none;
+}
+@media screen and (min-width: 320px) {
+  html {
+    font-size: 320px / 15;
+  }
+}
+@media screen and (min-width: 360px) {
+  html {
+    font-size: 360px / 15;
+  }
+}
+@media screen and (min-width: 375px) {
+  html {
+    font-size: 375px / 15;
+  }
+}
+@media screen and (min-width: 384px) {
+  html {
+    font-size: 384px / 15;
+  }
+}
+@media screen and (min-width: 400px) {
+  html {
+    font-size: 400px / 15;
+  }
+}
+@media screen and (min-width: 414px) {
+  html {
+    font-size: 414px / 15;
+  }
+}
+@media screen and (min-width: 424px) {
+  html {
+    font-size: 424px / 15;
+  }
+}
+@media screen and (min-width: 480px) {
+  html {
+    font-size: 480px / 15;
+  }
+}
+@media screen and (min-width: 540px) {
+  html {
+    font-size: 540px / 15;
+  }
+}
+@media screen and (min-width: 720px) {
+  html {
+    font-size: 720px / 15;
+  }
+}
+@media screen and (min-width: 750px) {
+  html {
+    font-size: 750px / 15;
+  }
+}
+ul,
+li,
+p {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+body {
+  min-width: 320px;
+  width: 18.75rem;
+  margin: 0 auto;
+  font-family: Arial, Helvetica;
+  background: #ccc;
+}
+.header {
+  position: absolute;
+  width: 18.75rem;
+  height: 7.65rem;
+}
+.header .headre-pic {
+  width: 18.75rem;
+  height: 7.65rem;
+}
+.header .headre-pic img {
+  width: 100%;
+  height: 100%;
+}
+.header .header-logo {
+  position: absolute;
+  top: 0;
+  float: left;
+  width: 18.75rem;
+  height: 7.65rem;
+}
+.header .header-logo img {
+  width: 100%;
+  height: 100%;
+}
+.header .header-user {
+  width: 2.45rem;
+  height: 2.45rem;
+  position: absolute;
+  top: 3.75rem;
+  left: 1rem;
+}
+.header .header-user img {
+  width: 100%;
+  height: 100%;
+}
+.header .users {
+  position: absolute;
+  top: 3rem;
+  left: 3.75rem;
+  color: #fff;
+}
+.bannar {
+  position: absolute;
+  width: 18.75rem;
+  height: 5rem;
+  background-color: #fff;
+  top: 7.65rem;
+}
+.bannar a {
+  display: block;
+  float: left;
+  width: 3.3rem;
+  margin-left: 1.3rem;
+}
+.bannar a img {
+  width: 50%;
+  margin-top: 0.75rem;
+  margin-left: 0.3rem;
+}
+.bannar a span {
+  display: block;
+  font-size: 0.6rem;
+  color: #ccc;
+  margin-top: 0.5rem;
+}
+.nav {
+  position: absolute;
+  width: 18.75rem;
+  height: 10.75rem;
+  top: 13rem;
+  background-color: #fff;
+}
+.nav .nav-exclusive-td {
+  width: 4rem;
+  margin-top: 0.55rem;
+}
+.nav .nav-exclusive-tb {
+  position: absolute;
+  width: 4rem;
+  top: 2.4rem;
+  height: 3.5rem;
+}
+.nav .nav-exclusive-tb img {
+  width: 40%;
+  margin-top: 0.55rem;
+  margin-left: 1rem;
+}
+.nav .nav-exclusive-tb span {
+  display: block;
+  font-size: 0.6rem;
+  color: #ccc;
+  margin-left: 0.4rem;
+}
+.nav .nav-exclusive-tc {
+  position: absolute;
+  left: 5rem;
+  top: 2.4rem;
+  width: 4rem;
+  height: 3.5rem;
+}
+.nav .nav-exclusive-tc img {
+  width: 40%;
+  margin-top: 0.55rem;
+  margin-left: 1rem;
+}
+.nav .nav-exclusive-tc span {
+  display: block;
+  font-size: 0.6rem;
+  color: #ccc;
+  margin-left: 0.4rem;
+}
+.nav .nav-exclusive-te {
+  position: absolute;
+  left: 10rem;
+  width: 4rem;
+  top: 2.4rem;
+  height: 3.5rem;
+}
+.nav .nav-exclusive-te img {
+  width: 40%;
+  margin-top: 0.55rem;
+  margin-left: 1rem;
+}
+.nav .nav-exclusive-te span {
+  display: block;
+  font-size: 0.6rem;
+  color: #ccc;
+  margin-left: 0.4rem;
+}
+.nav .nav-exclusive-tf {
+  position: absolute;
+  left: 15rem;
+  top: 2.4rem;
+  width: 4rem;
+  height: 3.5rem;
+}
+.nav .nav-exclusive-tf img {
+  width: 40%;
+  margin-top: 0.55rem;
+  margin-left: 1rem;
+}
+.nav .nav-exclusive-tf span {
+  display: block;
+  font-size: 0.6rem;
+  color: #ccc;
+  margin-left: 0.4rem;
+}
+.nav .nav-exclusive-ta {
+  position: absolute;
+  width: 4rem;
+  height: 3.5rem;
+  top: 7rem;
+}
+.nav .nav-exclusive-ta img {
+  width: 40%;
+  margin-top: 0.55rem;
+  margin-left: 1rem;
+}
+.nav .nav-exclusive-ta span {
+  display: block;
+  font-size: 0.6rem;
+  color: #ccc;
+  margin-left: 0.4rem;
+}
+.nav .nav-exclusive-tg {
+  position: absolute;
+  left: 5rem;
+  width: 4rem;
+  height: 3.5rem;
+  top: 7rem;
+}
+.nav .nav-exclusive-tg img {
+  width: 40%;
+  margin-top: 0.55rem;
+  margin-left: 1rem;
+}
+.nav .nav-exclusive-tg span {
+  display: block;
+  font-size: 0.6rem;
+  color: #ccc;
+  margin-left: 0.4rem;
+}
+.nav .nav-exclusive-th {
+  position: absolute;
+  left: 10rem;
+  width: 4rem;
+  height: 3.5rem;
+  top: 7rem;
+}
+.nav .nav-exclusive-th img {
+  width: 40%;
+  margin-top: 0.55rem;
+  margin-left: 1rem;
+}
+.nav .nav-exclusive-th span {
+  display: block;
+  font-size: 0.6rem;
+  color: #ccc;
+  margin-left: 0.4rem;
+}
+.content {
+  position: absolute;
+  top: 23.9rem;
+  width: 18.75rem;
+  height: 6.65rem;
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
+}
+.content .content-tb {
+  position: absolute;
+  top: 1.3rem;
+  left: 0.8rem;
+  width: 7.5rem;
+  height: 3.15rem;
+}
+.content .content-tb a {
+  display: block;
+}
+.content .content-tb a img {
+  width: 100%;
+  height: 100%;
+}
+.content .content-td {
+  position: absolute;
+  top: 1.3rem;
+  left: 10.3rem;
+  width: 7.5rem;
+  height: 3.15rem;
+}
+.content .content-td a {
+  display: block;
+}
+.content .content-td a img {
+  width: 100%;
+  height: 100%;
+}
+.footer {
+  position: absolute;
+  top: 30.585rem;
+  width: 18.75rem;
+  height: 2.5rem;
+  background-color: #fff;
+}
+.footer .footer-a {
+  position: absolute;
+  top: 0.25rem;
+  left: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+.footer .footer-a a {
+  display: block;
+}
+.footer .footer-a a img {
+  width: 50%;
+  height: 50%;
+}
+.footer .footer-a a span {
+  display: block;
+  color: orange;
+  font-size: 0.5rem;
+  margin-top: 0.2rem;
+  margin-left: 0.1rem;
+}
+.footer .footer-b {
+  position: absolute;
+  top: 0.25rem;
+  left: 6rem;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+.footer .footer-b a {
+  display: block;
+}
+.footer .footer-b a img {
+  margin-left: 0.3rem;
+  width: 50%;
+  height: 50%;
+}
+.footer .footer-b a span {
+  display: block;
+  color: #ccc;
+  font-size: 0.5rem;
+}
+.footer .footer-c {
+  position: absolute;
+  top: 0.25rem;
+  left: 10.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+.footer .footer-c a {
+  display: block;
+}
+.footer .footer-c a img {
+  margin-left: 0.3rem;
+  width: 50%;
+  height: 50%;
+}
+.footer .footer-c a span {
+  display: block;
+  color: #ccc;
+  font-size: 0.5rem;
+  margin-left: 0.3rem;
+}
+.footer .footer-d {
+  position: absolute;
+  top: 0.25rem;
+  left: 15.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+.footer .footer-d a {
+  display: block;
+}
+.footer .footer-d a img {
+  margin-left: 0.3rem;
+  width: 45%;
+  height: 45%;
+}
+.footer .footer-d a span {
+  display: block;
+  color: #ccc;
+  font-size: 0.5rem;
+  margin-left: 0.4rem;
+}

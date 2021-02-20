@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        td,
+        th {
+            border: 1px solid #eee;
+            line-height: 35px;
+            font-size: 12px;
+        }
+
+        th {
+            background-color: #ddd;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .orange {
+            background-color: orange;
+        }
+
+        .white {
+            background-color: white;
+        }
+    </style>
+
+<body>
+    <div id="app">
+        <my-tbale :goods-list="goodsList">
+
+        </my-tbale>
+    </div>
+    <template id="apps">
+        <table>
+            <thead>
+                <tr>
+                    <th>商品编号</th>
+                    <th>商品名称</th>
+                    <th>商品图片</th>
+                    <th>商品描述</th>
+                    <th>市场价</th>
+                    <th>优惠价</th>
+                    <th>库存数量</th>
+                    <th>点击量</th>
+                    <th>上架时间</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for='item in goodsList' :key='item.id'>
+                    <td>{{item.id}}</td>
+                    <td>{{item.title}}</td>
+                    <td></td>
+                    <td>{{item.zhaiyao}}</td>
+                    <td>{{item.market_price}}</td>
+                    <td>{{item.sell_price}}</td>
+                    <td :class="[item.stock_quantity>=100?'white':item.stock_quantity<20?'red':'orange']">
+                        {{item.stock_quantity}}</td>
+                    <td>{{item.click}}</td>
+                    <td>{{item.add_time |  dataFormat('yyyy-MM-dd hh:mm:ss') }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </template>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-router@3.4.3/dist/vue-router.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuex@3.5.1/dist/vuex.min.js"></script>
+    <script src="js/axios.js"></script>
+    <script>
+        // 时间过滤器
+        Vue.filter('dataFormat', function (value, fmt) {
+            let getDate = new Date(value);
+            let o = {
+                'M+': getDate.getMonth() + 1,
+                'd+': getDate.getDate(),
+                'h+': getDate.getHours(),
+                'm+': getDate.getMinutes(),
+                's+': getDate.getSeconds(),
+                'q+': Math.floor((getDate.getMonth() + 3) / 3),
+                'S': getDate.getMilliseconds()
+            };
+            if (/(y+)/.test(fmt)) {
+                fmt = fmt.replace(RegExp.$1, (getDate.getFullYear() + '').substr(4 - RegExp.$1.length))
+            }
+            for (let k in o) {
+                if (new RegExp('(' + k + ')').test(fmt)) {
+                    fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? (o[k]) : (('00' + o[k]).substr(('' +
+                        o[k]).length)))
+                }
+            }
+            return fmt;
+        });
+        Vue.component('my-tbale', {
+            props: ['goodsList'],
+            template: '#apps'
+        })
+        const vm = new Vue({
+            el: '#app',
+            name: 'App',
+            data: {
+                goodsList: []
+
+            },
+            async created() {
+                const {
+                    data: res
+                } = await axios.get('http://www.liulongbin.top:3005/api/getgoods?pageindex=0')
+                if (res.status !== 0) return alert('获取商品列表失败!')
+                this.goodsList = res.message
+                console.log(res.message);
+            },
+            methods: {},
+        });
+    </script>
+</body>
+
+</html>

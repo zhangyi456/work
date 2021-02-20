@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script src="/js/vue.js"></script>
+		<script src="./js/axios.js"></script>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			.goods-info {
+				display: flex;
+				border: 1px solid #ccc;
+				padding: 10px;
+				margin: 10px;
+			}
+			.goods-info .img {
+				width: 300px;
+			}
+			.goods-desc {
+				display: flex;
+				flex-direction: column;
+				padding: 10px 30px 10px;
+			}
+			h2 {
+				margin-bottom: 10px;
+			}
+			.goods-desc span {
+				margin-bottom: 10px;
+			}
+			.goods-desc p {
+				margin-bottom: 10px;
+			}
+			.new-price {
+				font-size: 20px;
+				color: red;
+			}
+			.old-price {
+				font-size: 16px;
+				text-decoration: line-through;
+			}
+			.goods-desc .num {
+				display: flex;
+				align-items: center;
+				margin-bottom: 10px;
+			}
+			.num input {
+				width: 120px;
+				height: 30px;
+				font-size: 24px;
+			}
+			.goods-desc a {
+				display: block;
+				width: 80px;
+				height: 40px;
+				line-height: 40px;
+				text-align: center;
+				color: #fff;
+				background-color: red;
+				text-decoration: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<goods-item :goods-list="goodsList" @num-change="numChange"></goods-item>
+		</div>
+
+		<template id="goods">
+			<div class="goods-all">
+				<div class="goods-info" v-for="item in goodsList" :key="item.id">
+					<div class="img">
+						<img src="" :alt="item.zhaiyao" />
+					</div>
+					<div class="goods-desc">
+						<h2>{{item.title}}</h2>
+						<span>上架日期 : {{item.add_time}} </span>
+						<span>库存数量 : {{item.stock_quantity}}</span>
+						<p><span class="new-price">¥{{item.sell_price}}</span> <span class="old-price">¥{{item.market_price}}</span></p>
+						<div class="num">
+							购买数量 :&nbsp;
+							<input type="number" :value="item.num" @input="$emit('num-change',$event,item.id)" />
+						</div>
+						<a :href="`/buy/id=${item.id}&num=${item.num}`">立即购买</a>
+					</div>
+				</div>
+			</div>
+		</template>
+		<script>
+			Vue.component('goods-item', {
+				props: ['goodsList'],
+				template: '#goods',
+				data: function () {
+					return {}
+				},
+				methods: {}
+			})
+
+			const vm = new Vue({
+				el: '#app',
+				name: 'App',
+				data: {
+					goodsList: []
+				},
+				async created() {
+					const { data: res } = await axios.get('http://www.liulongbin.top:3005/api/getgoods?pageindex=0')
+					// console.log(res)
+					if (res.status !== 0) return alert('获取商品列表失败!')
+					res.message.forEach(item => {
+						item.num = 1
+					})
+					// console.log(res.message)
+					this.goodsList = res.message
+				},
+				methods: {
+					numChange(e, id) {
+						// console.log(e.target.value, id)
+						this.goodsList.some(item => {
+							if (item.id == id) {
+								item.num = +e.target.value
+							}
+						})
+						// console.log(this.goodsList)
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
